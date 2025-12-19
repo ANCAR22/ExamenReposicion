@@ -6,33 +6,36 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-                <th>Fecha Limite</th>
-                <th><a href="index.php?page=ControladoresDatosTareas-FormDatosTarea&mode=INS">Nuevo</a></th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Prioridad</th>
+                <th>Completada</th>
+                <th><a href="index.php?page=ControladorDatosTareas-FormDatosTarea&mode=INS">Nuevo</a></th>
             </tr>
         </thead>
         <tbody>
             {{foreach DatosTareas}}
             <tr>
-                <td>{{id_tarea}}</td>
+                <td>{{tarea_id}}</td>
+                <td>{{titulo}}</td>
                 <td>{{descripcion}}</td>
-                <td>{{estado}}</td>
-                <td>{{fecha_limite}}</td>
+                <td>{{prioridad}}</td>
+                <td>{{completada}}</td>
                 <td>
-                    <a href="index.php?page=ControladoresDatosTareas-FormDatosTarea&mode=UPD&id_tarea={{id_tarea}}">Editar</a>&nbsp;    
-                    <a href="index.php?page=ControladoresDatosTareas-FormDatosTarea&mode=DEL&id_tarea={{id_tarea}}">Eliminar</a>&nbsp;
-                    <a href="index.php?page=ControladoresDatosTareas-FormDatosTarea&mode=DSP&id_tarea={{id_tarea}}">Ver</a>&nbsp;
+                    <a href="index.php?page=ControladorDatosTareas-FormDatosTarea&mode=UPD&id_tarea={{tarea_id}}">Editar</a>&nbsp;
+                    <a href="index.php?page=ControladorDatosTareas-FormDatosTarea&mode=DEL&id_tarea={{tarea_id}}">Eliminar</a>&nbsp;
+                    <a href="index.php?page=ControladorDatosTareas-FormDatosTarea&mode=DSP&id_tarea={{tarea_id}}">Ver</a>&nbsp;
                 </td>
             </tr>
             {{endfor DatosTareas}}
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="5" class="right">
-                    <strong>Registros de tareas: {{total}}</strong>
+                <td colspan="6" class="right">
+                    <strong>Total Tareas: {{total}}</strong>
                 </td>
-            </tr>       
+            </tr>
         </tfoot>
     </table>
 </section>
+

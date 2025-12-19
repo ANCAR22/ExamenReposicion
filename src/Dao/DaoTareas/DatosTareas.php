@@ -8,58 +8,56 @@ class DatosTareas extends Table
 {
     public static function obtenerDatos()
     {
-        $sql = "select * from DatosTareas";
+        $sql = "SELECT * FROM tareas";
         return self::obtenerRegistros($sql, []);
     }
 
-    public static function obtenerUnDato(int $id_tarea)
+    public static function obtenerUnDato(int $tarea_id)
     {
-        $sql = "Select * from DatosTareas where id_tarea=:id_tarea";
-        return self::obtenerUnRegistro($sql, ["id_tarea" => $id_tarea]);
+        $sql = "SELECT * FROM tareas WHERE tarea_id = :tarea_id";
+        return self::obtenerUnRegistro($sql, ["tarea_id" => $tarea_id]);
     }
 
     public static function crearDatosTareas(
         string $titulo,
         string $descripcion,
-        string $fecha_vencimiento,
+        string $prioridad,
         bool $completada
     ) {
-        $sqlinsert = "insert into DatosTareas (titulo, descripcion, fecha_vencimiento, completada)
-                    values (:titulo, :descripcion, :fecha_vencimiento, :completada)";
-
+        $sqlInsert = "INSERT INTO tareas (titulo, descripcion, prioridad, completada)
+                      VALUES (:titulo, :descripcion, :prioridad, :completada)";
         $insertData = [
             "titulo" => $titulo,
             "descripcion" => $descripcion,
-            "fecha_vencimiento" => $fecha_vencimiento,
+            "prioridad" => $prioridad,
             "completada" => $completada
         ];
-
-        return self::executeNonQuery($sqlinsert, $insertData);
+        return self::executeNonQuery($sqlInsert, $insertData);
     }
 
     public static function editarDatosTareas(
-        int $id_tarea,
+        int $tarea_id,
         string $titulo,
         string $descripcion,
-        string $fecha_vencimiento,
+        string $prioridad,
         bool $completada
     ) {
-        $sqlUpdate = "update DatosTareas set titulo=:titulo, descripcion=:descripcion, fecha_vencimiento=:fecha_vencimiento, completada=:completada
-        where id_tarea=:id_tarea";
+        $sqlUpdate = "UPDATE tareas
+                      SET titulo=:titulo, descripcion=:descripcion, prioridad=:prioridad, completada=:completada
+                      WHERE tarea_id=:tarea_id";
         $updateData = [
-            "id_tarea" => $id_tarea,
+            "tarea_id" => $tarea_id,
             "titulo" => $titulo,
             "descripcion" => $descripcion,
-            "fecha_vencimiento" => $fecha_vencimiento,
+            "prioridad" => $prioridad,
             "completada" => $completada
         ];
-
         return self::executeNonQuery($sqlUpdate, $updateData);
     }
 
-    public static function eliminarDatosTareas(int $id_tarea)
+    public static function eliminarDatosTareas(int $tarea_id)
     {
-        $sqlDelete = "delete from DatosTareas where id_tarea=:id_tarea";
-        return self::executeNonQuery($sqlDelete, ["id_tarea" => $id_tarea]);
+        $sqlDelete = "DELETE FROM tareas WHERE tarea_id=:tarea_id";
+        return self::executeNonQuery($sqlDelete, ["tarea_id" => $tarea_id]);
     }
 }

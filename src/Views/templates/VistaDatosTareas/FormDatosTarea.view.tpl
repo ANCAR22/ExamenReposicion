@@ -1,5 +1,4 @@
-<section class="container"
->
+<section class="container">
     <section class="deplth-2">
         <h2>{{modeDsc}}</h2>
     </section>
@@ -11,23 +10,27 @@
     </ul>
     {{endif hasErrores}}
 
-    <form action="index.php?page=ControladoresDatosTareas-FormDatosTarea&mode={{mode}}&id_tarea={{id_tarea}}" method="post">
+    <form action="index.php?page=ControladorDatosTareas-FormDatosTarea&mode={{mode}}&id_tarea={{tarea_id}}" method="post">
         <div>
-            <label for="id_tarea">Id de Tarea:</label><br/>
-            <input type="text" name="id_tarea" id="id_tarea" value="{{id_tarea}}" readonly />
-            <input type="hidden" name="vlt" value="{{token}}" >
+            <label for="tarea_id">ID de Tarea:</label><br/>
+            <input type="text" name="tarea_id" id="tarea_id" value="{{tarea_id}}" readonly />
+            <input type="hidden" name="vlt" value="{{token}}">
         </div><br/>
         <div>
-            <label for="descripcion">Descripcion:</label><br/>
-            <input type="text" size="60" name="descripcion" id="descripcion" value="{{descripcion}}" {{readonly}} />
+            <label for="titulo">Título:</label><br/>
+            <input type="text" name="titulo" id="titulo" value="{{titulo}}" {{readonly}} />
         </div><br/>
         <div>
-            <label for="estado">Estado:</label><br/>
-            <input type="text" size="20" name="estado" id="estado" value="{{estado}}" {{readonly}} />
+            <label for="descripcion">Descripción:</label><br/>
+            <input type="text" name="descripcion" id="descripcion" value="{{descripcion}}" {{readonly}} />
         </div><br/>
         <div>
-            <label for="fecha_limite">Fecha Limite:</label><br/>
-            <input type="date" name="fecha_limite" id="fecha_limite" value="{{fecha_limite}}" {{readonly}}/>
+            <label for="prioridad">Prioridad:</label><br/>
+            <input type="text" name="prioridad" id="prioridad" value="{{prioridad}}" {{readonly}} />
+        </div><br/>
+        <div>
+            <label for="completada">Completada:</label><br/>
+            <input type="checkbox" name="completada" id="completada" value="1" {{completada ? 'checked' : ''}} {{readonly}} placeholder="150"/>
         </div><br/>
         <div>
             <button id="btnCancelar">Cancelar</button>
@@ -37,12 +40,13 @@
         </div>
     </form>
 </section>
-<script>    
-    document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("btnCancelar").addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.assign("index.php?page=ControladoresDatosTareas-DatosTareas");
-        })
-    })
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("btnCancelar").addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.assign("index.php?page=ControladorDatosTareas-DatosTareas");
+    });
+});
 </script>

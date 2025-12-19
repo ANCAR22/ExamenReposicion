@@ -11,9 +11,8 @@ class DatosTareas extends PublicController
     public function run(): void
     {
         $viewData = [];
-        $viewData["DatosTareas"] = [];
         $viewData["DatosTareas"] = dt::obtenerDatos();
         $viewData["total"] = count($viewData["DatosTareas"]);
-        Renderer::render("VistaDatosTareas/listadatos", $viewData);
+        Renderer::render("VistaDatosTareas/ListaTarea", $viewData);
     }
 }
